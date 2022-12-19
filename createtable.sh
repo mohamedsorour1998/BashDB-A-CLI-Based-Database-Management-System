@@ -10,17 +10,27 @@ if [[ -f $tablename ]]
 then
 ########################2nd IF
 echo Table already Exsits!
-./../createtable.sh
+cd ..
+./connectDB.sh
 else
 ###e.g if table does not exists
-echo creating the table in the background...
+echo creating the table in the background ...
 #backend here
-touch .//$tablename
+touch ./$tablename
 touch ./.metaOF$tablename
 ## end of it
 echo please tell me the number of columns?
-read noc
+read pnoc
+#check if table coulmn number is normal
+if [[ "$pnoc" =~ ^(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20)$ ]]
+then
+let noc=$pnoc
 let x=$noc
+else
+echo ERROR!
+cd ..
+./connectDB.sh
+fi
 
 while (( x!=0 ))
 do
@@ -31,8 +41,7 @@ read pcn
 if [[ $pcn =~ ^[a-zA-Z]+$ ]]
 then
 ########################3rd IF
-#if [[ -f $dbname ]] 
-#then
+
 ###4th IF check in the file about matching coulmn name
      if [ `grep "$pcn" .metaOF$tablename | wc -l` -eq 1 ]
     then
@@ -56,7 +65,8 @@ then
 cdt=$pcdt
 else
 echo ERROR!
-./../createtable.sh
+cd ..
+./connectDB.sh
 fi
 
 ####must be unique
@@ -83,7 +93,8 @@ then
 ispk=$pispk
 else
 echo ERROR!
-./../createtable.sh
+cd ..
+./connectDB.sh
 fi
 
 let x=x-1
