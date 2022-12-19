@@ -34,7 +34,7 @@ exit
 4)./../insertinto.sh
 exit
 ;;
-5)./../electfrom.sh
+5)./../selectfrom.sh
 exit
 ;;
 6)./../deletefrom.sh
