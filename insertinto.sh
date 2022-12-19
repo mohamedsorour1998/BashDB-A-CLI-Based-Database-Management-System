@@ -15,7 +15,6 @@ fi
 echo "please enter a table name!"
 read tablename
 
-
 if [[ -f $tablename ]] 
 then
 ###e.g if table does exists check how many coulmn in it
@@ -30,74 +29,60 @@ do
 cname=$(sed -n "$cr p" ./.metaOF$tablename | cut -d: -f1)
 cdt=$(sed -n "$cr p" ./.metaOF$tablename | cut -d: -f2)
 ispk=$(sed -n "$cr p" ./.metaOF$tablename | cut -d: -f3)
+
 echo "please enter the value of coulmn $cname which have a datatype of $cdt and the pk status is $ispk: "
-read data
+read pdata
 #check data
-#check data entred if it in the same datatype as the coulmn
-if [[ "$cdt" =~ ^(i)$ && $data =~ ^[0-9]+$ ]]
+
+#check data entred if it the PK of the coulmn then it must be unique
+for i in `awk '{print $1}' ./$tablename`
+do
+if [[ "$ispk" =~ ^(pk)$ ]]
 then
-echo appending
-elif [[ "$cdt" =~ ^(s)$ && $data =~ ^[a-zA-Z]+$ ]]
+if  (($pdata ==$i ))
 then
-echo appending
-else
-echo wrong type!
+echo pk is not unique!
 cd ..
 ./connectDB.sh
 fi
-#check data entred if it the PK of the coulmn then it must be unique
-#if [[ "$ispk" =~ ^(pk)$ && $data =~ ^[a-zA-Z]+$ ]]
-#then
-#echo appending
-#else
-#echo wrong type!
-#cd ..
-#./connectDB.sh
-#fi
+fi
+done
 
+#check data entred if it in the same datatype as the coulmn
+if [[ "$cdt" =~ ^(i)$ && $pdata =~ ^[0-9]+$ ]]
+then
+data=$pdata
+echo appending ...
+
+elif [[ "$cdt" =~ ^(s)$ && $pdata =~ ^[a-zA-Z]+$ ]]
+then
+data=$pdata
+echo appending ...
+else
+echo wrong type! deleting the record ...
+#deleting the record before exiting
+sed -n "$cr d" ./$tablename
+#ending
+cd ..
+./connectDB.sh
+fi
 let cr=cr+1
 noc=$noc-1
 
-#backend starts to enter metadata to .meta
-#echo "$cn:$cdt:$ispk" >> ./.metaOF$tablename
+#backend starts to enter data to table file, -n for not going in newline, " " is the delimitter
+echo -n "$data " >> ./$tablename
 #backend ends
 
 #ending the loop
 done
-
+#printing a new line so next value of data get it's own line
+echo " " >> ./$tablename
 
 #starting the ending of the script
-
-
+echo done inserting you data into coulmn!
+cd ..
+./connectDB.sh
 #ending the ending of the script
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ###e.g if table does not exists
 else
