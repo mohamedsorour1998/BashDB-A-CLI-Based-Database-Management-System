@@ -55,7 +55,7 @@ RecNum=$(awk '{print NR,$ColNum}' ./$tablename | grep "$data" | cut -d " " -f1)
  
 #deleting
 #using -i to order sed to delete
-sed -n -i "$RecNum d" ./$tablename
+sed -i "$RecNum d" ./$tablename
 echo here you go!
 
 #returning back!

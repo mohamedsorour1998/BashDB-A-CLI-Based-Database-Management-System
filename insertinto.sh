@@ -61,7 +61,7 @@ echo appending ...
 else
 echo wrong type! deleting the record ...
 #deleting the record before exiting
-sed -n "$cr d" ./$tablename
+sed -i "$cr d" ./$tablename
 #ending
 cd ..
 ./connectDB.sh
