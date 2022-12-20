@@ -9,7 +9,8 @@ then
 
 else
 echo "here you go a list of availble DB!"
-find ./ -maxdepth 1 -type d | cut -d / -f2
+#exclude .git folder
+find ./ -maxdepth 1 -type d | cut -d / -f2 | grep -v ".git"
 read pdbname
 if [[ -d $pdbname ]] 
 then

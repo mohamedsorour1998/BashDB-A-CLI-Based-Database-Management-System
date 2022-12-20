@@ -23,7 +23,7 @@ echo do you want to select it all or by record?
 select blablabla in "select all = select * from $tablename" "select by record = select * from $tablename where ..."
 do
 case $REPLY in
-1)echo select * from $tablename ...
+1)echo "select * from $tablename"
 cat $tablename
 cd ..
 ./connectDB.sh
@@ -59,7 +59,7 @@ fi
 ColNum=$(awk -F: '{print $1,NR}' ./.metaOF$tablename | grep "$cname" | cut -d " " -f2)
 
 #$data -> RecNum in file
-RecNum=$(awk '{print NR,$ColNum}' students | grep "$data" | cut -d " " -f1)
+RecNum=$(awk '{print NR,$ColNum}' ./$tablename | grep "$data" | cut -d " " -f1)
  
 #printing
 Rec=$(sed -n "$RecNum p" ./$tablename)
