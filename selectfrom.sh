@@ -24,6 +24,10 @@ select blablabla in "select all = select * from $tablename" "select by record = 
 do
 case $REPLY in
 1)echo "select * from $tablename"
+#using this command to make a header for the table, tr replaces \n to " " e.g new line to space 
+awk -F: '{print $1}' ./.metaOF$tablename | tr -s '\n '  ' '
+#echo to add anew line after the header
+echo
 cat $tablename
 cd ..
 ./connectDB.sh
@@ -64,6 +68,10 @@ RecNum=$(awk '{print NR,$ColNum}' ./$tablename | grep "$data" | cut -d " " -f1)
 #printing
 Rec=$(sed -n "$RecNum p" ./$tablename)
 echo here you go!
+#using this command to make a header for the table, tr replaces \n to " " e.g new line to space 
+awk -F: '{print $1}' ./.metaOF$tablename | tr -s '\n '  ' '
+#echo to add anew line after the header
+echo
 echo $Rec
 #returning back!
 cd ..
