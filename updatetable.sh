@@ -113,7 +113,7 @@ RecNum=$(awk '{print NR,$ColNum}' ./$tablename | grep "$data" | cut -d " " -f1)
 setColNum=$(awk -F: '{print $1,NR}' ./.metaOF$tablename | grep "$setcname" | cut -d " " -f2)
 
 #searching for the prevoius value of the data
-#$'"$setColNum"' -> awk dis not understand that we need $coulmnum it reads it $0 & print all, so we use'"$coulmnnum"'
+#$'"$setColNum"' -> awk did not understand that we need $coulmnum it reads it $0 & print all, so we use'"$coulmnnum"'
 dataprev=$(awk '{print NR, $'"$setColNum"'}' ./$tablename  |grep "$RecNum" | cut -d " " -f2)
 
 #updating
