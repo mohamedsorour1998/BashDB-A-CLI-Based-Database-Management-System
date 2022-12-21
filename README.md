@@ -1,6 +1,6 @@
-# ITI-Bash Shell Script Database Management System (DBMS):__
+# ITI-Bash Shell Script Database Management System (DBMS):
 ![My Remote Image](https://user-images.githubusercontent.com/110028481/208984704-5db64ac5-5991-433c-8f81-2c32a68e588f.png)__
-The Project aim to develop DBMS, that will enable users to store and
+__The Project aim to develop DBMS, that will enable users to store and
 retrieve the data from Hard-disk.
 The Project Features:
 The Application will be CLI Menu based app, that will provide to user
