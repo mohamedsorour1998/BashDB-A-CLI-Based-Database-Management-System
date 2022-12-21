@@ -35,7 +35,6 @@ cd ..
 2)echo "select * from $tablename where"
 read pcname
 #check data
-
 # check in the file about matching coulmn name
 if [ `grep "$pcname" ./.metaOF$tablename | wc -l` -eq 1 ]
 then
