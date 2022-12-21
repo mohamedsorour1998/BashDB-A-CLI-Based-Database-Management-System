@@ -1,4 +1,5 @@
 # ITI-Bash Shell Script Database Management System (DBMS):
+[Screenshot from 2022-12-21 21-08-44](https://user-images.githubusercontent.com/110028481/208984704-5db64ac5-5991-433c-8f81-2c32a68e588f.png)
 The Project aim to develop DBMS, that will enable users to store and
 retrieve the data from Hard-disk.
 The Project Features:
@@ -14,7 +15,7 @@ this Menu:
 - Create Table
 - List Tables
 - Drop Table
-- Insert into Table
+- Insert into Table!
 - Select From Table
 - Delete From Table
 - Update Table
