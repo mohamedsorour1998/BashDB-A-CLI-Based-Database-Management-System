@@ -29,4 +29,3 @@ insert and update
 into table
 The Bonus:
 - Make the App to accept SQL Code
-- Use GUI instead of the above menu
