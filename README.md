@@ -25,7 +25,6 @@ Hints:
 Format
 - Ask about columns datatypes in create table and check on them in both
 insert and update
--Ask about primary key in create table and check for it in the insert
-into table
-The Bonus:
+-Ask about primary key in create table and check for it in the insert into table\
+The Bonus:\
 - Make the App to accept SQL Code
