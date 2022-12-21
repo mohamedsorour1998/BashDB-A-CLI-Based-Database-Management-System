@@ -59,9 +59,7 @@ then
 data=$pdata
 echo appending ...
 else
-echo wrong type! deleting the record ...
-#deleting the record before exiting
-sed -i "$cr d" ./$tablename
+echo wrong type! 
 #ending
 cd ..
 ./connectDB.sh
