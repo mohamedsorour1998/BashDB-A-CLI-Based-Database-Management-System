@@ -67,10 +67,7 @@ elif [[ "$cdt" =~ ^(s)$ && $psetdata =~ ^[a-zA-Z]+$ ]]
 then
 setdata=$psetdata
 else
-echo wrong type! deleting the record ...
-#deleting the record before exiting
-sed -i "$cr d" ./$tablename
-#ending
+echo wrong type!
 cd ..
 ./connectDB.sh
 fi
